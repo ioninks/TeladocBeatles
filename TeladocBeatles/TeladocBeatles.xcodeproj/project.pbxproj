@@ -8,12 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		B5A1A7E32ADA71BB00BA3220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A7E22ADA71BB00BA3220 /* AppDelegate.swift */; };
-		B5A1A7E72ADA71BB00BA3220 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A7E62ADA71BB00BA3220 /* ViewController.swift */; };
+		B5A1A7E72ADA71BB00BA3220 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A7E62ADA71BB00BA3220 /* AlbumsViewController.swift */; };
 		B5A1A7EC2ADA71BD00BA3220 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5A1A7EB2ADA71BD00BA3220 /* Assets.xcassets */; };
 		B5A1A7EF2ADA71BD00BA3220 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A1A7ED2ADA71BD00BA3220 /* LaunchScreen.storyboard */; };
 		B5A1A7FA2ADA71BD00BA3220 /* TeladocBeatlesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A7F92ADA71BD00BA3220 /* TeladocBeatlesTests.swift */; };
 		B5A1A8042ADA71BD00BA3220 /* TeladocBeatlesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A8032ADA71BD00BA3220 /* TeladocBeatlesUITests.swift */; };
 		B5A1A8062ADA71BD00BA3220 /* TeladocBeatlesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A8052ADA71BD00BA3220 /* TeladocBeatlesUITestsLaunchTests.swift */; };
+		B5A1A81A2ADA753000BA3220 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A8192ADA753000BA3220 /* BaseRequest.swift */; };
+		B5A1A81C2ADA75A600BA3220 /* RequestHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A81B2ADA75A600BA3220 /* RequestHandlerProtocol.swift */; };
+		B5A1A8202ADA76ED00BA3220 /* AlbumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A81F2ADA76ED00BA3220 /* AlbumService.swift */; };
+		B5A1A8222ADA7E8200BA3220 /* AlbumEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A8212ADA7E8200BA3220 /* AlbumEntity.swift */; };
+		B5A1A8242ADA7FD000BA3220 /* AlbumSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A8232ADA7FD000BA3220 /* AlbumSearchResponse.swift */; };
+		B5A1A8272ADA813700BA3220 /* AlbumsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A8262ADA813700BA3220 /* AlbumsRequest.swift */; };
+		B5A1A8292ADA8C4400BA3220 /* AlbumsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A8282ADA8C4400BA3220 /* AlbumsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +43,7 @@
 /* Begin PBXFileReference section */
 		B5A1A7DF2ADA71BB00BA3220 /* TeladocBeatles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeladocBeatles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A1A7E22ADA71BB00BA3220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B5A1A7E62ADA71BB00BA3220 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B5A1A7E62ADA71BB00BA3220 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		B5A1A7EB2ADA71BD00BA3220 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5A1A7EE2ADA71BD00BA3220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5A1A7F02ADA71BD00BA3220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +52,13 @@
 		B5A1A7FF2ADA71BD00BA3220 /* TeladocBeatlesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeladocBeatlesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A1A8032ADA71BD00BA3220 /* TeladocBeatlesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeladocBeatlesUITests.swift; sourceTree = "<group>"; };
 		B5A1A8052ADA71BD00BA3220 /* TeladocBeatlesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeladocBeatlesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B5A1A8192ADA753000BA3220 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
+		B5A1A81B2ADA75A600BA3220 /* RequestHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandlerProtocol.swift; sourceTree = "<group>"; };
+		B5A1A81F2ADA76ED00BA3220 /* AlbumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumService.swift; sourceTree = "<group>"; };
+		B5A1A8212ADA7E8200BA3220 /* AlbumEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumEntity.swift; sourceTree = "<group>"; };
+		B5A1A8232ADA7FD000BA3220 /* AlbumSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSearchResponse.swift; sourceTree = "<group>"; };
+		B5A1A8262ADA813700BA3220 /* AlbumsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsRequest.swift; sourceTree = "<group>"; };
+		B5A1A8282ADA8C4400BA3220 /* AlbumsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +171,8 @@
 		B5A1A8162ADA726100BA3220 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				B5A1A7E62ADA71BB00BA3220 /* ViewController.swift */,
+				B5A1A7E62ADA71BB00BA3220 /* AlbumsViewController.swift */,
+				B5A1A8282ADA8C4400BA3220 /* AlbumsViewModel.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -165,8 +180,46 @@
 		B5A1A8172ADA726A00BA3220 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B5A1A81D2ADA76C100BA3220 /* AlbumService */,
+				B5A1A8182ADA752100BA3220 /* RequestHandler */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		B5A1A8182ADA752100BA3220 /* RequestHandler */ = {
+			isa = PBXGroup;
+			children = (
+				B5A1A8192ADA753000BA3220 /* BaseRequest.swift */,
+				B5A1A81B2ADA75A600BA3220 /* RequestHandlerProtocol.swift */,
+			);
+			path = RequestHandler;
+			sourceTree = "<group>";
+		};
+		B5A1A81D2ADA76C100BA3220 /* AlbumService */ = {
+			isa = PBXGroup;
+			children = (
+				B5A1A81F2ADA76ED00BA3220 /* AlbumService.swift */,
+				B5A1A8252ADA812700BA3220 /* Requests */,
+				B5A1A81E2ADA76DB00BA3220 /* Entities */,
+			);
+			path = AlbumService;
+			sourceTree = "<group>";
+		};
+		B5A1A81E2ADA76DB00BA3220 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				B5A1A8212ADA7E8200BA3220 /* AlbumEntity.swift */,
+				B5A1A8232ADA7FD000BA3220 /* AlbumSearchResponse.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		B5A1A8252ADA812700BA3220 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				B5A1A8262ADA813700BA3220 /* AlbumsRequest.swift */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,8 +352,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5A1A7E72ADA71BB00BA3220 /* ViewController.swift in Sources */,
+				B5A1A81C2ADA75A600BA3220 /* RequestHandlerProtocol.swift in Sources */,
+				B5A1A7E72ADA71BB00BA3220 /* AlbumsViewController.swift in Sources */,
+				B5A1A8242ADA7FD000BA3220 /* AlbumSearchResponse.swift in Sources */,
+				B5A1A8272ADA813700BA3220 /* AlbumsRequest.swift in Sources */,
 				B5A1A7E32ADA71BB00BA3220 /* AppDelegate.swift in Sources */,
+				B5A1A8292ADA8C4400BA3220 /* AlbumsViewModel.swift in Sources */,
+				B5A1A8202ADA76ED00BA3220 /* AlbumService.swift in Sources */,
+				B5A1A8222ADA7E8200BA3220 /* AlbumEntity.swift in Sources */,
+				B5A1A81A2ADA753000BA3220 /* BaseRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

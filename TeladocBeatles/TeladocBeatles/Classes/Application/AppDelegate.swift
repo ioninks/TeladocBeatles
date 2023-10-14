@@ -16,7 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     self.window = UIWindow(frame: UIScreen.main.bounds)
     
-    let viewController = ViewController(nibName: nil, bundle: nil)
+    let viewModel = AlbumsViewModel(
+      initialQuery: "thebeatles",
+      dependencies: .init(
+        albumService: AlbumService()
+      )
+    )
+    let viewController = AlbumsViewController(viewModel: viewModel)
     self.window?.rootViewController = viewController
     
     self.window?.makeKeyAndVisible()
