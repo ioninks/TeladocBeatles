@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct AlbumSearchResponse: Decodable {
+struct AlbumSearchResponse: Codable {
   let results: [AlbumEntity]
 }

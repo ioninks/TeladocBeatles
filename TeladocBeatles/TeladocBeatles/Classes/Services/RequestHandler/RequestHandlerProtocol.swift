@@ -9,7 +9,13 @@ import Combine
 import Foundation
 
 protocol RequestHandlerProtocol {
-  func dataTaskPublisher(for request: URLRequest) -> URLSession.DataTaskPublisher
+  func fetchData(for request: URLRequest) -> AnyPublisher<(data: Data, response: URLResponse), URLError>
 }
 
-extension URLSession: RequestHandlerProtocol {}
+extension URLSession: RequestHandlerProtocol {
+  
+  func fetchData(for request: URLRequest) -> AnyPublisher<(data: Data, response: URLResponse), URLError> {
+    dataTaskPublisher(for: request).eraseToAnyPublisher()
+  }
+  
+}

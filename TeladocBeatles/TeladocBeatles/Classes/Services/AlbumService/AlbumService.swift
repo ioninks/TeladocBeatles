@@ -8,14 +8,14 @@
 import Combine
 import Foundation
 
-enum AlbumServiceError: Error {
+enum AlbumServiceError: Error, Equatable {
   case networkFailure
   case badResponse
   case parsingError
 }
 
 protocol AlbumServiceProtocol {
-  func fetchAlbums(artistName: String) -> AnyPublisher<[AlbumEntity], Error>
+  func fetchAlbums(artistName: String) -> AnyPublisher<[AlbumEntity], AlbumServiceError>
 }
 
 final class AlbumService: AlbumServiceProtocol {
@@ -26,21 +26,19 @@ final class AlbumService: AlbumServiceProtocol {
     self.requestHandler = requestHandler
   }
   
-  func fetchAlbums(artistName: String) -> AnyPublisher<[AlbumEntity], Error> {
+  func fetchAlbums(artistName: String) -> AnyPublisher<[AlbumEntity], AlbumServiceError> {
     let request = AlbumsRequest(artistName: artistName)
     let decoder = JSONDecoder()
-    return self.requestHandler.dataTaskPublisher(for: request.urlRequest)
+    return self.requestHandler.fetchData(for: request.urlRequest)
       .mapError { _ in AlbumServiceError.networkFailure }
       .tryMap { data, response in
         guard (response as? HTTPURLResponse)?.statusCode == 200 else {
           throw AlbumServiceError.badResponse
         }
-        do {
-          return try decoder.decode(AlbumSearchResponse.self, from: data)
-        } catch {
-          throw AlbumServiceError.parsingError
-        }
+        return data
       }
+      .decode(type: AlbumSearchResponse.self, decoder: decoder)
+      .mapError { $0 as? AlbumServiceError ?? .parsingError }
       .map(\.results)
       .eraseToAnyPublisher()
   }

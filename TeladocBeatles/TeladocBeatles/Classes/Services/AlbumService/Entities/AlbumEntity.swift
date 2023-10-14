@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct AlbumEntity: Decodable {
+struct AlbumEntity: Codable, Equatable {
   let collectionName: String
 }
