@@ -15,6 +15,7 @@ enum AlbumServiceError: Error, Equatable {
 }
 
 protocol AlbumServiceProtocol {
+  /// Fetches albums from remote service using provided artist name as a search query
   func fetchAlbums(artistName: String) -> AnyPublisher<[AlbumEntity], AlbumServiceError>
 }
 

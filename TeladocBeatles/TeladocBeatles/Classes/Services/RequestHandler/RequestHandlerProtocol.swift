@@ -9,6 +9,7 @@ import Combine
 import Foundation
 
 protocol RequestHandlerProtocol {
+  /// Performs provided URLRequest and returns result as a publisher
   func fetchData(for request: URLRequest) -> AnyPublisher<(data: Data, response: URLResponse), URLError>
 }
 

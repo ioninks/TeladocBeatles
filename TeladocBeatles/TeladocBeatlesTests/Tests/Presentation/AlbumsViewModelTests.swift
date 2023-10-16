@@ -47,13 +47,16 @@ final class AlbumsViewModelTests: XCTestCase {
     // given
     setUpViewModel(initialQuery: Constants.initialQuery)
     
-    // when
+    // when received albums for the initial query
     let album = AlbumEntity(collectionId: 1, collectionName: "1")
     albumServiceMock.stubbedFetchAlbumsResult.send([album])
     
     // then
     let expectedConfiguration = AlbumCellConfiguration(id: 1, title: "1")
-    XCTAssertEqual(cellConfigurationsAccumulator, [[expectedConfiguration]])
+    XCTAssertEqual(
+      cellConfigurationsAccumulator, [[expectedConfiguration]],
+      "should emit proper cell configurations"
+    )
   }
   
 }

@@ -66,19 +66,25 @@ final class AlbumServiceTests: XCTestCase {
     let data = makeSerializedResponseData(forAlbums: [Constants.album])
     let response = makeHTTPURLResponse(statusCode: 200)
     
-    // when
+    // when received correct data with 200 response code
     requestHandlerMock.stubbedDataTaskPublisherResult.send((data: data, response: response))
     
     // then
-    XCTAssertEqual(fetchAlbumsResult, [Constants.album])
+    XCTAssertEqual(
+      fetchAlbumsResult, [Constants.album],
+      "should return fetched album entities"
+    )
   }
   
   func test_whenReceivedURLError_shouldThrowNetworkFailure() {
-    // when
+    // when request handler emits network error
     requestHandlerMock.stubbedDataTaskPublisherResult.send(completion: .failure(.init(.timedOut)))
     
     // then
-    XCTAssertEqual(fetchAlbumsError, .networkFailure)
+    XCTAssertEqual(
+      fetchAlbumsError, .networkFailure,
+      "should throw networkFailure error"
+    )
   }
   
   func test_whenStatusCodeIsNot200_shouldThrowBadResponse() {
@@ -86,11 +92,14 @@ final class AlbumServiceTests: XCTestCase {
     let data = makeSerializedResponseData(forAlbums: [Constants.album])
     let response = makeHTTPURLResponse(statusCode: 404)
     
-    // when
+    // when received 404 response code
     requestHandlerMock.stubbedDataTaskPublisherResult.send((data: data, response: response))
     
     // then
-    XCTAssertEqual(fetchAlbumsError, .badResponse)
+    XCTAssertEqual(
+      fetchAlbumsError, .badResponse,
+      "should throw badResponse error"
+    )
   }
   
   func test_whenDataParsingFails_shouldThrowParsingError() {
@@ -98,11 +107,14 @@ final class AlbumServiceTests: XCTestCase {
     let data = Data()
     let response = makeHTTPURLResponse(statusCode: 200)
     
-    // when
+    // when failed to parse data
     requestHandlerMock.stubbedDataTaskPublisherResult.send((data: data, response: response))
     
     // then
-    XCTAssertEqual(fetchAlbumsError, .parsingError)
+    XCTAssertEqual(
+      fetchAlbumsError, .parsingError,
+      "should throw parsingError"
+    )
   }
   
 }
