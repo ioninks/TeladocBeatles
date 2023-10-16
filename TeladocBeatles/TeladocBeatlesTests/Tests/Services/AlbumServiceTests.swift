@@ -12,7 +12,7 @@ import XCTest
 
 private enum Constants {
   static let artistName = "thebeatles"
-  static let album = AlbumEntity(collectionName: "1")
+  static let album = AlbumEntity(collectionId: 1, collectionName: "1")
   static let url = URL(string: "apple.com")!
 }
 

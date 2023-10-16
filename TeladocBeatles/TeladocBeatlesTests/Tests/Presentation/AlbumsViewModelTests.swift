@@ -12,7 +12,7 @@ import XCTest
 
 private enum Constants {
   static let initialQuery = "query"
-  static let album = AlbumEntity(collectionName: "1")
+  static let album = AlbumEntity(collectionId: 1, collectionName: "1")
 }
 
 final class AlbumsViewModelTests: XCTestCase {
@@ -24,46 +24,64 @@ final class AlbumsViewModelTests: XCTestCase {
   private var albumServiceMock: AlbumServiceMock!
   
   // cancellables
-  private var cellTitlesCancellable: AnyCancellable!
+  private var cellConfigurationsCancellable: AnyCancellable!
   
-  // accumulators
-  private var cellTitlesAccumulator: [[String]]!
+  // input subjects
+  private var searchQueryDidChangeSubject: PassthroughSubject<String, Never>!
   
-  override func setUp() {
-    super.setUp()
-    
-    albumServiceMock = .init()
-    viewModel = .init(
-      initialQuery: Constants.initialQuery,
-      dependencies: .init(albumService: albumServiceMock)
-    )
-    
-    let output = viewModel.bind(input: .init())
-    
-    cellTitlesAccumulator = []
-    cellTitlesCancellable = output.cellTitles
-      .sink(receiveValue: { titles in
-        self.cellTitlesAccumulator.append(titles)
-      })
-  }
+  // output accumulators
+  private var cellConfigurationsAccumulator: [[AlbumCellConfiguration]]!
   
   override func tearDown() {
     viewModel = nil
     albumServiceMock = nil
-    cellTitlesCancellable = nil
-    cellTitlesAccumulator = nil
+    cellConfigurationsCancellable = nil
+    cellConfigurationsAccumulator = nil
     
     super.tearDown()
   }
   
   // MARK: Tests
   
-  func test_whenReceivedAlbumsFromService_shouldEmitTitles() {
+  func test_whenReceivedAlbumsFromService_shouldEmitConfigurations() {
+    // given
+    setUpViewModel(initialQuery: Constants.initialQuery)
+    
     // when
-    albumServiceMock.stubbedFetchAlbumsResult.send([Constants.album])
+    let album = AlbumEntity(collectionId: 1, collectionName: "1")
+    albumServiceMock.stubbedFetchAlbumsResult.send([album])
     
     // then
-    XCTAssertEqual(cellTitlesAccumulator, [[Constants.album.collectionName]])
+    let expectedConfiguration = AlbumCellConfiguration(id: 1, title: "1")
+    XCTAssertEqual(cellConfigurationsAccumulator, [[expectedConfiguration]])
+  }
+  
+}
+
+// MARK: - Helper Methods
+
+private extension AlbumsViewModelTests {
+  
+  func setUpViewModel(initialQuery: String) {
+    albumServiceMock = .init()
+    viewModel = .init(
+      initialQuery: Constants.initialQuery,
+      dependencies: .init(albumService: albumServiceMock)
+    )
+    
+    searchQueryDidChangeSubject = .init()
+    
+    let output = viewModel.bind(
+      input: .init(
+        searchQueryDidChange: searchQueryDidChangeSubject.eraseToAnyPublisher()
+      )
+    )
+    
+    cellConfigurationsAccumulator = []
+    cellConfigurationsCancellable = output.cellConfigurations
+      .sink(receiveValue: { configurations in
+        self.cellConfigurationsAccumulator.append(configurations)
+      })
   }
   
 }

@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       )
     )
     let viewController = AlbumsViewController(viewModel: viewModel)
-    self.window?.rootViewController = viewController
+    let navigationVC = UINavigationController(rootViewController: viewController)
+    self.window?.rootViewController = navigationVC
     
     self.window?.makeKeyAndVisible()
     

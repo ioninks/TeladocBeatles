@@ -13,12 +13,15 @@ import Foundation
 final class AlbumServiceMock: AlbumServiceProtocol {
   
   private(set) var invokedFetchAlbumsCount = 0
+  private(set) var invokedFetchAlbumsArtistName: String?
+  
   let stubbedFetchAlbumsResult = PassthroughSubject<[AlbumEntity], AlbumServiceError>()
   
   func fetchAlbums(artistName: String) -> AnyPublisher<[AlbumEntity], AlbumServiceError> {
     stubbedFetchAlbumsResult
       .handleEvents(receiveSubscription:  { _ in
         self.invokedFetchAlbumsCount += 1
+        self.invokedFetchAlbumsArtistName = artistName
       })
       .eraseToAnyPublisher()
   }

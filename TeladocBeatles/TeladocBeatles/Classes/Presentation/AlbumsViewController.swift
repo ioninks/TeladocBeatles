@@ -17,9 +17,14 @@ final class AlbumsViewController: UIViewController {
   // MARK: UI
   
   private let tableView = UITableView()
-  private var tableViewDataSource: UITableViewDiffableDataSource<Int, String>?
+  
+  // MARK: Private Properties
+  
+  private var tableViewDataSource: UITableViewDiffableDataSource<Int, AlbumCellConfiguration>?
   
   private let viewModel: AlbumsViewModelProtocol
+  
+  private let searchQueryDidChangeSubject = PassthroughSubject<String, Never>()
   
   private var disposeBag = Set<AnyCancellable>()
   
@@ -43,6 +48,7 @@ final class AlbumsViewController: UIViewController {
     setHierarchy()
     setUI()
     setLayout()
+    setUpSearch()
     setDataSource()
     setBindings()
   }
@@ -54,7 +60,7 @@ final class AlbumsViewController: UIViewController {
 private extension AlbumsViewController {
   
   func setDataSource() {
-    tableViewDataSource = .init(tableView: tableView, cellProvider: { tableView, _, title in
+    tableViewDataSource = .init(tableView: tableView, cellProvider: { tableView, _, configuration in
       let cell: UITableViewCell
       if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier) {
         cell = dequeuedCell
@@ -63,7 +69,7 @@ private extension AlbumsViewController {
       }
       
       var content = cell.defaultContentConfiguration()
-      content.text = title
+      content.text = configuration.title
       
       cell.contentConfiguration = content
       return cell
@@ -77,17 +83,42 @@ private extension AlbumsViewController {
 private extension AlbumsViewController {
   
   func setBindings() {
-    let output = viewModel.bind(input: .init())
+    let output = viewModel.bind(
+      input: .init(
+        searchQueryDidChange: searchQueryDidChangeSubject.eraseToAnyPublisher()
+      )
+    )
     
-    output.cellTitles
+    output.cellConfigurations
       .receive(on: DispatchQueue.main)
-      .sink { [tableViewDataSource] titles in
-        var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
+      .sink { [tableViewDataSource] configurations in
+        var snapshot = NSDiffableDataSourceSnapshot<Int, AlbumCellConfiguration>()
         snapshot.appendSections([0])
-        snapshot.appendItems(titles)
+        snapshot.appendItems(configurations)
         tableViewDataSource?.apply(snapshot)
       }
       .store(in: &disposeBag)
+  }
+  
+}
+
+// MARK: - Search
+
+private extension AlbumsViewController {
+  
+  func setUpSearch() {
+    let searchController = UISearchController(searchResultsController: nil)
+    navigationItem.searchController = searchController
+    searchController.searchResultsUpdater = self
+  }
+  
+}
+
+extension AlbumsViewController: UISearchResultsUpdating {
+  
+  func updateSearchResults(for searchController: UISearchController) {
+    let query = searchController.searchBar.text
+    searchQueryDidChangeSubject.send(query ?? "")
   }
   
 }

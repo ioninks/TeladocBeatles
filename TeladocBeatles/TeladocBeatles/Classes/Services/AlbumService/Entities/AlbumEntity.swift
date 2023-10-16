@@ -8,5 +8,6 @@
 import Foundation
 
 struct AlbumEntity: Codable, Equatable {
+  let collectionId: UInt
   let collectionName: String
 }
