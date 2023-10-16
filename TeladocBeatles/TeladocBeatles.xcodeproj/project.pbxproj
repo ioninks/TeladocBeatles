@@ -11,7 +11,6 @@
 		B5A1A7E72ADA71BB00BA3220 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A7E62ADA71BB00BA3220 /* AlbumsViewController.swift */; };
 		B5A1A7EC2ADA71BD00BA3220 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5A1A7EB2ADA71BD00BA3220 /* Assets.xcassets */; };
 		B5A1A7EF2ADA71BD00BA3220 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5A1A7ED2ADA71BD00BA3220 /* LaunchScreen.storyboard */; };
-		B5A1A7FA2ADA71BD00BA3220 /* TeladocBeatlesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A7F92ADA71BD00BA3220 /* TeladocBeatlesTests.swift */; };
 		B5A1A8042ADA71BD00BA3220 /* TeladocBeatlesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A8032ADA71BD00BA3220 /* TeladocBeatlesUITests.swift */; };
 		B5A1A8062ADA71BD00BA3220 /* TeladocBeatlesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A8052ADA71BD00BA3220 /* TeladocBeatlesUITestsLaunchTests.swift */; };
 		B5A1A81A2ADA753000BA3220 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A1A8192ADA753000BA3220 /* BaseRequest.swift */; };
@@ -52,7 +51,6 @@
 		B5A1A7EE2ADA71BD00BA3220 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5A1A7F02ADA71BD00BA3220 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5A1A7F52ADA71BD00BA3220 /* TeladocBeatlesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeladocBeatlesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5A1A7F92ADA71BD00BA3220 /* TeladocBeatlesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeladocBeatlesTests.swift; sourceTree = "<group>"; };
 		B5A1A7FF2ADA71BD00BA3220 /* TeladocBeatlesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeladocBeatlesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A1A8032ADA71BD00BA3220 /* TeladocBeatlesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeladocBeatlesUITests.swift; sourceTree = "<group>"; };
 		B5A1A8052ADA71BD00BA3220 /* TeladocBeatlesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeladocBeatlesUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 		B5A1A7F82ADA71BD00BA3220 /* TeladocBeatlesTests */ = {
 			isa = PBXGroup;
 			children = (
-				B5A1A7F92ADA71BD00BA3220 /* TeladocBeatlesTests.swift */,
 				B5A1A82B2ADA96E900BA3220 /* Mocks */,
 				B5A1A82A2ADA96E200BA3220 /* Tests */,
 			);
@@ -437,7 +434,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5A1A8302ADA972E00BA3220 /* RequestHandlerMock.swift in Sources */,
-				B5A1A7FA2ADA71BD00BA3220 /* TeladocBeatlesTests.swift in Sources */,
 				B5A1A8322ADA996F00BA3220 /* AlbumServiceMock.swift in Sources */,
 				B5A1A8382ADAAC8D00BA3220 /* AlbumsViewModelTests.swift in Sources */,
 				B5A1A8352ADA9AA600BA3220 /* AlbumServiceTests.swift in Sources */,

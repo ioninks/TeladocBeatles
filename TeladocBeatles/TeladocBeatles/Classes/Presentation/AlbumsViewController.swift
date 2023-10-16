@@ -132,7 +132,7 @@ private extension AlbumsViewController {
   }
   
   func setUI() {
-
+    // setting up views' properties goes here
   }
   
   func setLayout() {

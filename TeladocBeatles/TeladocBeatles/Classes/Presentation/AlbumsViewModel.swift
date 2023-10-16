@@ -60,7 +60,7 @@ final class AlbumsViewModel: AlbumsViewModelProtocol {
     
     let emptyQueries = trimmedQueries
       .filter { $0.isEmpty }
-      // for empty queries let's just show The Beatles
+      // for empty queries let's just show the initial query (The Beatles)
       .map { [initialQuery] _ in initialQuery }
     
     let nonEmptyQueries = trimmedQueries
